@@ -1,0 +1,36 @@
+<html>
+   <head>
+      <title>{{ title }}</title>
+   </head>
+   <body>
+<!--post方法将文本框中的内容提交到action对应的url中-->
+      <form action="/course.add" method="post">
+        学生序号：<input type="text" name="student_no">
+        教师序号：<input type="text" name="teacher_no">
+        课程序号：<input type="text" name="course_no">
+        课程时间：<input type="text" name="course_time">
+        课程地点：<input type="text" name="course_place">
+        <input type="submit" value="添加课程">
+      </form>
+     <hr>
+     <table border=1>
+        <tr><th>学号</th><th>姓名</th><th>课程序号</th><th>课程名</th><th>教师序号</th><th>教师名</th><th>上课时间</th><th>上课地点</th><th>操作</th></tr>
+        {% for item in items %}
+        <tr>
+         <td>{{ item[0] }}</td>
+         <td>{{ item[1] }}</td>
+         <td>{{ item[4] }}</td>
+         <td>{{ item[5] }}</td>
+         <td>{{ item[2] }}</td>
+         <td>{{ item[3] }}</td>
+         <td>{{ item[6] }}</td>
+         <td>{{ item[7] }}</td>
+         <td>
+          [<a href="/course.edit/{{item[0]}}/{{item[4]}}/{{item[2]}}">修改课程</a>]
+          [<a href="/course.del/{{item[0]}}/{{item[4]}}/{{item[2]}}">删除课程</a>]
+         </td>
+        </tr>
+        {% end %}
+     </table>
+   </body>
+ </html>
